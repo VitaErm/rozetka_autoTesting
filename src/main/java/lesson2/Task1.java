@@ -1,4 +1,4 @@
-package lesson2;
+package main.java.lesson2;
 
 /**
  * Реализовать у класса Task1 переменные age (тип int),  name (тип String), ageGroup(тип String)

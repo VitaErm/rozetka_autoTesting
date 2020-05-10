@@ -1,4 +1,4 @@
-package lesson1Advanced;
+package main.java.lesson1Advanced;
 
 /*
 Семантическое версионирование

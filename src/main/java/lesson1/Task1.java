@@ -1,4 +1,4 @@
-package lesson1;
+package main.java.lesson1;
 
 public class Task1 {
     /* Минимум трех чисел

@@ -1,4 +1,4 @@
-package lesson1Advanced;
+package main.java.lesson1Advanced;
 
 public class Task1 {
     /* Минимум n чисел
