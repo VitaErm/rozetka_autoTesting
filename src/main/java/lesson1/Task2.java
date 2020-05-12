@@ -8,6 +8,8 @@ public class Task2 {
 
     public static void main(String[] args) {
         String s = "Vita ";
+        Task2 ask=new Task2();
+        ask.someMethod(s);
     }
 
     public String someMethod(String s) {
