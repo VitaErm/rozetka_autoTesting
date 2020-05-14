@@ -1,4 +1,4 @@
-package test.java.lesson1Tests;
+package tests;
 
 import main.java.lesson1.Task1;
 

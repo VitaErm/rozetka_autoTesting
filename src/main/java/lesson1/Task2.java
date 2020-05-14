@@ -6,20 +6,18 @@ System.out.println, System.out.print можно использовать тол�
 
 public class Task2 {
 
-    public static void main(String[] args) {
-        String s = "Vita ";
-        Task2 ask=new Task2();
-        ask.someMethod(s);
+    public String nameMultiplier5by10(String name) {
+        return nameMultiplier(name, 5, 10);
     }
 
-    public String someMethod(String s) {
-
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 10; j++) {
-                System.out.print(s);
+    public String nameMultiplier(String name, int rows, int columns) {
+        StringBuilder resultBuilder = new StringBuilder();
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                resultBuilder.append(name).append(" ");
             }
-            System.out.println();
+            resultBuilder.append("\r\n");
         }
-        return s;
+        return resultBuilder.toString();
     }
 }

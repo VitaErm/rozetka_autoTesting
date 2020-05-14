@@ -1,7 +1,6 @@
-package test.java.lesson1Tests;
+package tests;
 
 import main.java.lesson1.Task5;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
