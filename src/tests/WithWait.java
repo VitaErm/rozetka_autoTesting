@@ -9,7 +9,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -17,7 +16,7 @@ import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
+
 
 public class WithWait {
     WebDriver driver;
@@ -56,70 +55,68 @@ public class WithWait {
         wait.until(ExpectedConditions.elementToBeClickable(searchEl2));
         searchEl2.click();
 
-        WebElement userNameEl= driver.findElement(userName);
+        WebElement userNameEl = driver.findElement(userName);
         WebElement userEmailEl = driver.findElement(userEmail);
         WebElement userPasswordEl = driver.findElement(userPassword);
         WebElement submitEl = driver.findElement(submit);
 
-        for (WebElement elementToClick: new WebElement[] {userEmailEl, userNameEl, userPasswordEl, submitEl}) {
+        for (WebElement elementToClick : new WebElement[]{userEmailEl, userNameEl, userPasswordEl, submitEl}) {
             wait.until(ExpectedConditions.elementToBeClickable(elementToClick));
             elementToClick.click();
         }
 
-        // Red border doesn't show up immediately
-        synchronized (driver) {
-            driver.wait(2000);
-        }
+        Thread.sleep(2000);
 
-        for (WebElement validationElement: new WebElement[] {userEmailEl, userNameEl, userPasswordEl}) {
+        for (WebElement validationElement : new WebElement[]{userEmailEl, userNameEl, userPasswordEl}) {
             String borderColor = validationElement.getCssValue("border-color");
             System.out.println(borderColor + " " + validationElement.getAttribute("formcontrolname"));
             assertEquals(borderColor, fieldErrorBorderColorRed,
-                    "Expected red field of "+validationElement+", but had " +borderColor);
+                    "Expected red field of " + validationElement + ", but had " + borderColor);
         }
     }
-@Test
-public void testSecond() throws InterruptedException {
-    driver.get("https://rozetka.com.ua/");
 
-    WebElement searchEl = driver.findElement(usersAccount);
-    wait.until(ExpectedConditions.elementToBeClickable(searchEl));
-    searchEl.click();
+    @Test
+    public void testSecond() throws InterruptedException {
+        driver.get("https://rozetka.com.ua/");
 
-    WebElement searchEl2 = driver.findElement(registration);
-    wait.until(ExpectedConditions.elementToBeClickable(searchEl2));
-    searchEl2.click();
+        WebElement searchEl = driver.findElement(usersAccount);
+        wait.until(ExpectedConditions.elementToBeClickable(searchEl));
+        searchEl.click();
 
-    WebElement userNameEl= driver.findElement(userName);
-    wait.until(ExpectedConditions.elementToBeClickable(userNameEl));
-    userNameEl.sendKeys("Петров");
-    userNameEl.click();
-    WebElement userEmailEl = driver.findElement(userEmail);
-    wait.until(ExpectedConditions.elementToBeClickable(userEmailEl));
-    userEmailEl.click();
-    WebElement userPasswordEl = driver.findElement(userPassword);
-    wait.until(ExpectedConditions.elementToBeClickable(userPasswordEl));
-    userPasswordEl.click();
+        WebElement searchEl2 = driver.findElement(registration);
+        wait.until(ExpectedConditions.elementToBeClickable(searchEl2));
+        searchEl2.click();
 
-    WebElement searchEl3 = driver.findElement(submit);
-    wait.until(ExpectedConditions.elementToBeClickable(searchEl3));
-    searchEl3.click();
+        WebElement userNameEl = driver.findElement(userName);
+        wait.until(ExpectedConditions.elementToBeClickable(userNameEl));
+        userNameEl.sendKeys("Петров");
+        userNameEl.click();
+        WebElement userEmailEl = driver.findElement(userEmail);
+        wait.until(ExpectedConditions.elementToBeClickable(userEmailEl));
+        userEmailEl.click();
+        WebElement userPasswordEl = driver.findElement(userPassword);
+        wait.until(ExpectedConditions.elementToBeClickable(userPasswordEl));
+        userPasswordEl.click();
 
-    // Red border doesn't show up immediately
-    synchronized (driver) {
-        driver.wait(2000);
+        WebElement searchEl3 = driver.findElement(submit);
+        wait.until(ExpectedConditions.elementToBeClickable(searchEl3));
+        searchEl3.click();
+
+        // Red border doesn't show up immediately
+        // synchronized (driver) {
+        // driver.wait(2000);
+        //}
+        Thread.sleep(2000);
+        for (WebElement validationElement : new WebElement[]{userEmailEl, userPasswordEl}) {
+            String borderColor = validationElement.getCssValue("border-color");
+            assertEquals(borderColor, fieldErrorBorderColorRed, "Expected red field of " + validationElement + ", but had " + borderColor);
+        }
+
+        for (WebElement validationElement : new WebElement[]{userNameEl}) {
+            String borderColor = validationElement.getCssValue("border-color");
+            Assert.assertNotEquals(borderColor, fieldErrorBorderColorRed, "Expected not red field of " + validationElement + ", but had " + borderColor);
+        }
     }
-
-    for (WebElement validationElement: new WebElement[] {userEmailEl, userPasswordEl}) {
-        String borderColor = validationElement.getCssValue("border-color");
-        assertEquals(borderColor, fieldErrorBorderColorRed,"Expected red field of "+validationElement+", but had " +borderColor);
-    }
-
-    for (WebElement validationElement: new WebElement[] {userNameEl}) {
-        String borderColor = validationElement.getCssValue("border-color");
-        Assert.assertNotEquals(borderColor, fieldErrorBorderColorRed, "Expected not red field of "+validationElement+", but had " +borderColor);
-    }
-}
 
     @AfterMethod
     public void afterMethod() {
