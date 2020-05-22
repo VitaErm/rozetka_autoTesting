@@ -37,7 +37,7 @@ public class HomePage {
 
     public List<WebElement> searchBorder(String searchStr) {
         this.searchStr = searchStr;
-        By searchResultItem = By.cssSelector(".m-cat-subl-i");
+        By searchResultItem = By.cssSelector(".m-cat-subl-i .m-cat-subl-i-link");
 
         WebElement searchEl = driver.findElement(search);
         wait.until(ExpectedConditions.elementToBeClickable(searchEl));
