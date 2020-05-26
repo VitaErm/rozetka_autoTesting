@@ -1,4 +1,4 @@
-package tests;
+package test.java.LessonPrev;
 
 import main.java.lesson1.Task2;
 import org.testng.annotations.BeforeMethod;

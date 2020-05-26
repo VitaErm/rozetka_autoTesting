@@ -1,4 +1,4 @@
-package tests.Lesson9.po;
+package test.java.Lesson9.po;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -9,17 +9,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-public class HomePage {
+public class HomePagePre {
     private final WebDriver driver;
     private final WebDriverWait wait;
     private String searchStr;
     By search = By.cssSelector("[name='search']");
 
-    public HomePage(WebDriver driver) {
+    public HomePagePre(WebDriver driver) {
         this.driver = driver;
         wait = new WebDriverWait(this.driver, 10);
     }
-    public HomePage open() {
+    public HomePagePre open() {
         driver.get("https://rozetka.com.ua/");
         return this;
     }

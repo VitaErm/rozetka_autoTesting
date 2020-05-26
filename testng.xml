@@ -3,7 +3,7 @@
     <parameter name="name" value="Oooops"/>
     <test name="firstTest">
         <classes>
-            <class name="tests.lesson1Tests.Task5Test"></class>
+            <class name="test.lesson1Tests.Task5Test"></class>
         </classes>
     </test>
 </suite>

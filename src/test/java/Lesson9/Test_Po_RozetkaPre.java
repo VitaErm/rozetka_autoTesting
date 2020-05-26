@@ -1,22 +1,21 @@
-package tests.Lesson9;
+package test.java.Lesson9;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import tests.Lesson9.po.HomePage;
+import test.java.Lesson9.po.HomePagePre;
 
 import static org.testng.Assert.assertTrue;
 import java.util.List;
 
 
-public class Test_Po_Rozetka extends TestBaseSetup {
-    HomePage homePage;
+public class Test_Po_RozetkaPre extends TestBaseSetupPre {
+    HomePagePre homePage;
     String good;
 
     @BeforeMethod
     public void initialize() {
-        homePage = new HomePage(driver);
+        homePage = new HomePagePre(driver);
 
     }
 

@@ -1,9 +1,6 @@
-package tests;
+package test.java.LessonPrev;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -16,6 +13,7 @@ import org.testng.annotations.Test;
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 
 public class WithWait {
@@ -47,33 +45,21 @@ public class WithWait {
     public void testFirst() throws InterruptedException {
         driver.get("https://rozetka.com.ua/");
 
-        WebElement searchEl = driver.findElement(usersAccount);
-        wait.until(ExpectedConditions.elementToBeClickable(searchEl));
-        searchEl.click();
 
-        WebElement searchEl2 = driver.findElement(registration);
-        wait.until(ExpectedConditions.elementToBeClickable(searchEl2));
-        searchEl2.click();
-
-        WebElement userNameEl = driver.findElement(userName);
-        WebElement userEmailEl = driver.findElement(userEmail);
-        WebElement userPasswordEl = driver.findElement(userPassword);
-        WebElement submitEl = driver.findElement(submit);
-
-        for (WebElement elementToClick : new WebElement[]{userEmailEl, userNameEl, userPasswordEl, submitEl}) {
+        for (By locator : new By[]{usersAccount,registration,userEmail, userName, userPassword,submit}) {
+            WebElement elementToClick = driver.findElement(locator);
             wait.until(ExpectedConditions.elementToBeClickable(elementToClick));
             elementToClick.click();
         }
 
-        Thread.sleep(2000);
 
-        for (WebElement validationElement : new WebElement[]{userEmailEl, userNameEl, userPasswordEl}) {
-            String borderColor = validationElement.getCssValue("border-color");
-            System.out.println(borderColor + " " + validationElement.getAttribute("formcontrolname"));
-            assertEquals(borderColor, fieldErrorBorderColorRed,
-                    "Expected red field of " + validationElement + ", but had " + borderColor);
-        }
+        for (WebElement validation : new WebElement[]{driver.findElement(userName),driver.findElement(userEmail),driver.findElement(userPassword)}) {
+            wait.until(ExpectedConditions.attributeToBe(validation, "border-color", fieldErrorBorderColorRed));
+            assertEquals(fieldErrorBorderColorRed, validation.getCssValue("border-color"),
+                "Expected red field of " + validation + ", but had " + validation.getCssValue("border-color"));
     }
+
+}
 
     @Test
     public void testSecond() throws InterruptedException {
