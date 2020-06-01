@@ -58,6 +58,7 @@ public class HomePage {
         logger.info("Search on HomePage by" + searchStr + "in searchBorder");
         logger.warn("Search on HomePage by" + searchStr + "in searchBorder");
         this.searchStr = searchStr;
+        logger.debug(search.getAttribute("css"));
         wait.until(ExpectedConditions.elementToBeClickable(search));
         search.sendKeys(this.searchStr);
         search.sendKeys(Keys.ENTER);
