@@ -1,9 +1,14 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="Suite_second" >
-    <test name=" LocalChromeTest" >
-        <parameter name="browser" value="chromelocal"/>
+<suite name="Local-testing">
+    <listeners>
+        <listener class-name="test.java.utils.Listener"/>
+        <listener class-name="test.java.utils.AnnotationTrasformer"/>
+    </listeners>
+    <test name=" LocalChromeTest">
         <classes>
             <class name="test.java.TestPORozetka"/>
+            <class name="test.java.RunTest"/>
+            <class name="test.java.FailTest"/>
         </classes>
     </test>
 </suite>

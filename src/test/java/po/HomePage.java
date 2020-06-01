@@ -10,6 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import test.java.utils.PropertyLoader;
 
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class HomePage {
 
     public HomePage open() {
         logger.info("Open");
-        driver.get("https://rozetka.com.ua/");
+        driver.get(PropertyLoader.loadProperty("url"));
         logger.debug("URL: " + driver.getCurrentUrl());
         return this;
     }
@@ -68,7 +69,7 @@ public class HomePage {
 
     public List<WebElement> notebooksLabelCorrect(String labelName) throws InterruptedException {
         this.labelName = labelName;
-        driver.get("https://rozetka.com.ua/notebooks/c80004/filter/preset=workteaching/");
+        driver.get(PropertyLoader.loadProperty("url2"));
         logger.info("In method notebooksLabelCorrect");
         WebElement categoryFilterLabel = driver.findElement(By.id(labelName));
         WebElement clickableCategoryFilter = categoryFilterLabel.findElement(By.xpath(".."));

@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <suiteXmlFile>chrome-testng.xml</suiteXmlFile>
+        <suiteXmlFile>chromeLocal-testng.xml</suiteXmlFile>
     </properties>
 
     <build>

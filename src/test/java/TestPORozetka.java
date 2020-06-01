@@ -5,9 +5,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import test.java.po.HomePage;
-
 import java.util.List;
-
 import static org.testng.Assert.assertTrue;
 
 public class TestPORozetka extends TestBaseSetup {
@@ -57,7 +55,10 @@ public class TestPORozetka extends TestBaseSetup {
     @DataProvider(name="labelName")
     public Object[][] getData() {
         return new Object[][]{{"MSI"},{"Apple"},{"Xiaomi"},
-    };}}
+    };}
+
+}
+
 
 
 

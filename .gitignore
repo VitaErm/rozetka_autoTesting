@@ -4,3 +4,4 @@ target/
 *.exe
 logs/
 screenshots/
+config.properties
