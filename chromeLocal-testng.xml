@@ -9,6 +9,7 @@
             <class name="test.java.TestPORozetka"/>
             <class name="test.java.RunTest"/>
             <class name="test.java.FailTest"/>
+            <class name="test.java.TestRozetkaRandom"/>
         </classes>
     </test>
 </suite>

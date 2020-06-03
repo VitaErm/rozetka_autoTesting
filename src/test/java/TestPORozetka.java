@@ -1,13 +1,18 @@
 package test.java;
 
+import io.qameta.allure.*;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import test.java.po.HomePage;
+
 import java.util.List;
+
 import static org.testng.Assert.assertTrue;
 
+@Epic("Search")
+@TmsLink("TMS-123")
 public class TestPORozetka extends TestBaseSetup {
     HomePage homePage;
     String good;
@@ -18,6 +23,9 @@ public class TestPORozetka extends TestBaseSetup {
 
     }
 
+    @Feature("search list")
+    @Story("search list of iPhone")
+    @Issue("QWe-345")
     @Test
     public void testCorrectSearchList() {
         good = "iPhone";
@@ -30,6 +38,7 @@ public class TestPORozetka extends TestBaseSetup {
         }
     }
 
+    @Feature("search sideBorder")
     @Test
     public void testCorrectSearchBorder() {
         good = "Samsung";
@@ -43,19 +52,21 @@ public class TestPORozetka extends TestBaseSetup {
 
     }
 
+    @Feature("search filter for MSI, Apple, Xiaomi")
     @Test(dataProvider = "labelName")
     public void testCorrectLabel(String name) throws InterruptedException {
         homePage.open();
         List<WebElement> notebooks = homePage.notebooksLabelCorrect(name);
         for (WebElement element : notebooks) {
-            assertTrue(element.getText().contains(name),"Expected label's name of all notebooks was"+name+" ,but wasn'n");
+            assertTrue(element.getText().contains(name), "Expected label's name of all notebooks was" + name + " ,but wasn'n");
         }
     }
 
-    @DataProvider(name="labelName")
+    @DataProvider(name = "labelName")
     public Object[][] getData() {
-        return new Object[][]{{"MSI"},{"Apple"},{"Xiaomi"},
-    };}
+        return new Object[][]{{"MSI"}, {"Apple"}, {"Xiaomi"},
+        };
+    }
 
 }
 

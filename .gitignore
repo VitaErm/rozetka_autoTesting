@@ -5,3 +5,6 @@ target/
 logs/
 screenshots/
 config.properties
+allure-results/!categories.json
+allure-results/
+allure-report/

@@ -1,5 +1,6 @@
 package test.java.po;
 
+import io.qameta.allure.Step;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -11,7 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import test.java.utils.PropertyLoader;
-
+import java.util.ArrayList;
 import java.util.List;
 
 public class HomePage {
@@ -29,6 +30,9 @@ public class HomePage {
     private List<WebElement> searchResultItemLink;
     @FindBy(css = "a.goods-tile__heading")
     private List<WebElement> itemsOfLabel;
+    @FindBy(css = "div[data-filter-name='producer'] a.checkbox-filter__link input")
+    private List<WebElement> labels;
+
 
     public HomePage(WebDriver driver) {
         logger.debug("Home page initialized");
@@ -37,6 +41,7 @@ public class HomePage {
         PageFactory.initElements(driver, this);
     }
 
+    @Step("home page open")
     public HomePage open() {
         logger.info("Open");
         driver.get(PropertyLoader.loadProperty("url"));
@@ -44,6 +49,7 @@ public class HomePage {
         return this;
     }
 
+    @Step("search on home page by {searchStr}")
     public List<WebElement> searchList(String searchStr) {
         logger.info("Search on HomePage by " + searchStr + "in searchList");
         logger.error("Search on HomePage by " + searchStr + "in searchList");
@@ -55,6 +61,7 @@ public class HomePage {
         return this.searchResultItem;
     }
 
+    @Step(" search on home page by {searchStr} on sideBorder")
     public List<WebElement> searchBorder(String searchStr) {
         logger.info("Search on HomePage by" + searchStr + "in searchBorder");
         logger.warn("Search on HomePage by" + searchStr + "in searchBorder");
@@ -67,6 +74,7 @@ public class HomePage {
         return this.searchResultItemLink;
     }
 
+    @Step("get  WebElements of all notebooks by one {labelName} ")
     public List<WebElement> notebooksLabelCorrect(String labelName) throws InterruptedException {
         this.labelName = labelName;
         driver.get(PropertyLoader.loadProperty("url2"));
@@ -76,7 +84,6 @@ public class HomePage {
         wait.until(ExpectedConditions.elementToBeClickable(clickableCategoryFilter));
         clickableCategoryFilter.click();
         logger.error("In method notebooksLabelCorrect after filter");
-        //Thread.sleep(2000);
         logger.warn(driver.getTitle());
         wait.until(ExpectedConditions.titleContains(labelName));
         return this.itemsOfLabel;
@@ -84,7 +91,26 @@ public class HomePage {
 
     }
 
+    @Step(" get random label's name")
+    public String getRandomLabelName() {
+        driver.get("https://rozetka.com.ua/notebooks/c80004/filter/preset=workteaching");
+        logger.info("In method getRandomLabelName");
+        int max = labels.size();
+        int random = (int) (Math.random() * (max + 1));
+        logger.info(max);
+        List<String> labelNames = new ArrayList<>();
+        for (WebElement el : labels) {
+            String producer = el.getAttribute("id");
+            labelNames.add(producer);
+        }
+        logger.info("In method getRandomLabelName," +
+                "size of items is " + max + ", random is " + random +
+                ", randomLabelName is " + labelNames.get(random));
+        return labelNames.get(random);
+
+    }
 
 }
+
 
 
