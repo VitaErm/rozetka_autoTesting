@@ -15,7 +15,7 @@ pipeline {
         }
         stage("UI tests") {
             steps {
-                bat 'mvn clean -DsuiteXmlFile=chromeLocal-testng.xml'
+                bat 'mvn clean -DsuiteXmlFile=chromeLocal-testng.xml test'
             }
         }
         stage("Deploy") {
