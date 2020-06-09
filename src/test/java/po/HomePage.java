@@ -77,7 +77,7 @@ public class HomePage {
     @Step("get  WebElements of all notebooks by one {labelName} ")
     public List<WebElement> notebooksLabelCorrect(String labelName) throws InterruptedException {
         this.labelName = labelName;
-        driver.get(PropertyLoader.loadProperty("url2"));
+        driver.get("https://rozetka.com.ua/notebooks/c80004/filter/preset=workteaching/");
         logger.info("In method notebooksLabelCorrect");
         WebElement categoryFilterLabel = driver.findElement(By.id(labelName));
         WebElement clickableCategoryFilter = categoryFilterLabel.findElement(By.xpath(".."));
