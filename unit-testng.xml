@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="unittesting" >
+    <test name="unittest">
+                <classes>
+                    <class name="test.java.LessonPrev.Task2Test"/>
+                    <class name="test.java.LessonPrev.Task1Test"/>
+         </classes>
+    </test>
+</suite>
