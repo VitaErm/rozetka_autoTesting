@@ -1,4 +1,4 @@
-package test.java.Lesson9;
+package test.java.BaseVersion;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

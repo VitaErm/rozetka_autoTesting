@@ -1,9 +1,9 @@
-package test.java.Lesson9;
+package test.java.BaseVersion;
 
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import test.java.Lesson9.po.HomePagePre;
+import test.java.BaseVersion.poPre.HomePagePre;
 
 import static org.testng.Assert.assertTrue;
 import java.util.List;

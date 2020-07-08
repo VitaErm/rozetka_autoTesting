@@ -1,4 +1,4 @@
-package test.java.Lesson9.po;
+package test.java.BaseVersion.poPre;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
