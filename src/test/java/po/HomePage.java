@@ -64,7 +64,6 @@ public class HomePage {
     @Step(" search on home page by {searchStr} on sideBorder")
     public List<WebElement> searchBorder(String searchStr) {
         logger.info("Search on HomePage by" + searchStr + "in searchBorder");
-        logger.warn("Search on HomePage by" + searchStr + "in searchBorder");
         this.searchStr = searchStr;
         logger.debug(search.getAttribute("css"));
         wait.until(ExpectedConditions.elementToBeClickable(search));
@@ -83,8 +82,8 @@ public class HomePage {
         WebElement clickableCategoryFilter = categoryFilterLabel.findElement(By.xpath(".."));
         wait.until(ExpectedConditions.elementToBeClickable(clickableCategoryFilter));
         clickableCategoryFilter.click();
-        logger.error("In method notebooksLabelCorrect after filter");
-        logger.warn(driver.getTitle());
+        logger.warn("In method notebooksLabelCorrect after filter");
+        logger.error(driver.getTitle());
         wait.until(ExpectedConditions.titleContains(labelName));
         return this.itemsOfLabel;
 
