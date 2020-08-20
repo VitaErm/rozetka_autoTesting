@@ -13,12 +13,10 @@ public class Listener implements
 
     @Override
     public void beforeInvocation(IInvokedMethod iInvokedMethod, ITestResult iTestResult) {
-        logger.trace("BEFORE INVOCATION");
     }
 
     @Override
     public void afterInvocation(IInvokedMethod iInvokedMethod, ITestResult iTestResult) {
-        logger.trace("AFTER INVOCATION");
     }
 
     @Override
