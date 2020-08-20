@@ -24,6 +24,7 @@ public class TestBaseSetup {
     WebDriver driver;
 
 
+
     @BeforeMethod
     public void beforeMethod(ITestContext context) {
         System.setProperty("webdriver.chrome.driver" , "chromedriver.exe");
