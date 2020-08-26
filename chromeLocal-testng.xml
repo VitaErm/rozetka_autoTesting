@@ -6,7 +6,10 @@
     </listeners>
     <test name=" LocalChromeTest">
         <classes>
+            <class name="test.java.TestRozetkaRandom"></class>
             <class name="test.java.FailTest"></class>
+            <class name="test.java.TestPORozetka"></class>
+            <class name="test.java.TestPORozetkaCP"></class>
         </classes>
     </test>
 </suite>

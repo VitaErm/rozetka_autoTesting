@@ -18,8 +18,8 @@ import java.util.List;
 
 public class ContactPage {
     public Logger logger = LogManager.getLogger(ContactPage.class);
-    private WebDriver driver;
-    private WebDriverWait wait;
+    private final WebDriver driver;
+    private final WebDriverWait wait;
     @FindBy(css = "li.c-i-service-l-i")
     private List<WebElement> contacts;
 
@@ -39,16 +39,19 @@ public class ContactPage {
         return this;
     }
 
+    @Step("get contact numbers")
     public List<String> contactNumbers() {
         wait.until(ExpectedConditions.visibilityOfAllElements(contacts));
+        logger.info("Im method contactNumbers");
         List<String> numbers = new ArrayList<>();
         for (WebElement element : contacts) {
             String a = element.getText();
-            a = String.valueOf(a.charAt(2));
-            if (a.equals("0")) numbers.add(a);
-        }
-        return numbers;
+            logger.debug("Text: " + a);
 
+            if (a.matches(".?\\d.+")) numbers.add(a);
+        }
+
+        return numbers;
     }
 
 }

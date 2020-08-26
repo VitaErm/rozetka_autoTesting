@@ -27,7 +27,7 @@ public class TestRozetkaRandom extends TestBaseSetup {
         String randomLabel = homePage.getRandomLabelName();
         List<WebElement> notebooks = homePage.notebooksLabelCorrect(randomLabel);
         for (WebElement element : notebooks) {
-            assertTrue(element.getText().contains(randomLabel), "Expected label's name of all notebooks was" + randomLabel + " ,but wasn'n");
+            assertTrue(element.getText().contains(randomLabel), "Expected label's name of all notebooks was" + randomLabel + " ,but was not");
         }
     }
 }

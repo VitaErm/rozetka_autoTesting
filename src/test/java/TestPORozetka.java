@@ -38,19 +38,6 @@ public class TestPORozetka extends TestBaseSetup {
         }
     }
 
-    @Feature("search sideBorder")
-    @Test
-    public void testCorrectSearchBorder() {
-        good = "Samsung";
-        homePage.open();
-        List<WebElement> groupOfElements = homePage.searchBorder(good);
-        System.out.println(groupOfElements.size());
-        for (WebElement element : groupOfElements) {
-            assertTrue(element.getAttribute("href").contains(good.toLowerCase()), "Expected all goods " + good + ", but had not");
-        }
-
-
-    }
 
     @Feature("search filter for MSI, Apple, Xiaomi")
     @Test(dataProvider = "labelName")

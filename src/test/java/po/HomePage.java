@@ -12,6 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import test.java.utils.PropertyLoader;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,8 +27,6 @@ public class HomePage {
     private WebElement search;
     @FindBy(css = "span.goods-tile__title")
     private List<WebElement> searchResultItem;
-    @FindBy(css = ".m-cat-subl-i .m-cat-subl-i-link")
-    private List<WebElement> searchResultItemLink;
     @FindBy(css = "a.goods-tile__heading")
     private List<WebElement> itemsOfLabel;
     @FindBy(css = "div[data-filter-name='producer'] a.checkbox-filter__link input")
@@ -61,17 +60,6 @@ public class HomePage {
         return this.searchResultItem;
     }
 
-    @Step(" search on home page by {searchStr} on sideBorder")
-    public List<WebElement> searchBorder(String searchStr) {
-        logger.info("Search on HomePage by" + searchStr + "in searchBorder");
-        this.searchStr = searchStr;
-        logger.debug(search.getAttribute("css"));
-        wait.until(ExpectedConditions.elementToBeClickable(search));
-        search.sendKeys(this.searchStr);
-        search.sendKeys(Keys.ENTER);
-        wait.until(ExpectedConditions.titleContains(searchStr));
-        return this.searchResultItemLink;
-    }
 
     @Step("get  WebElements of all notebooks by one {labelName} ")
     public List<WebElement> notebooksLabelCorrect(String labelName) throws InterruptedException {
